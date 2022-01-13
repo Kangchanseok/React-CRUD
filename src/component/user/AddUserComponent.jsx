@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ApiService from "../../ApiService";
 
+// import {TextField, Button, Typography} from '@material-ui/core/TextField';
+
 class AddUserComponent extends Component{
 
   constructor(props){
@@ -50,53 +52,46 @@ class AddUserComponent extends Component{
 
   }
 
-  render(){
-    return(
-      <div>
-        <h2>Add User</h2>
-        <form>
-          <div>
-            <label>User Name:</label>
-            <input type="text" placeholder="please input your username" name="username" 
-value={this.state.username} onChange={this.onChange} />
-          </div>
+//   render(){
+//     return(
+//       <div>
+//         <Typography variant="h4" style={style}>Add User</Typography>
+//         <form style={formContainer}>
+         
+//             <TextField type="text" placeholder="please input your username" name="username" 
+// fullWidth margin="normal" value={this.state.username} onChange={this.onChange} />
 
-          <div>
-            <label>Password:</label>
-            <input type="password" placeholder="please input your password" name="password" 
-value={this.state.password} onChange={this.onChange} />
-          </div>
+//             <TextField type="password" placeholder="please input your password" name="password" 
+// fullWidth margin="normal" value={this.state.password} onChange={this.onChange} />
 
-          <div>
-            <label>First Name:</label>
-            <input placeholder="please input your first name" name="firstName" 
-value={this.state.firstName} onChange={this.onChange} />
-          </div>
+//             <TextField placeholder="please input your first name" name="firstName" 
+// fullWidth margin="normal" value={this.state.firstName} onChange={this.onChange} />
 
-          <div>
-            <label>Last Name:</label>
-            <input placeholder="please input your last name" name="lastName" 
-value={this.state.lastName} onChange={this.onChange} />
-          </div>
+//             <TextField placeholder="please input your last name" name="lastName" 
+// fullWidth margin="normal" value={this.state.lastName} onChange={this.onChange} />
 
-          <div>
-            <label>Age:</label>
-            <input type="number" placeholder="please input your age" name="age" 
-value={this.state.age} onChange={this.onChange} />
-          </div>
+//             <TextField type="number" placeholder="please input your age" name="age" 
+// fullWidth margin="normal" value={this.state.age} onChange={this.onChange} />
 
-          <div>
-            <label>Salary:</label>
-            <input type="number" placeholder="please input your salary" name="salary" 
-value={this.state.salary} onChange={this.onChange} />
-          </div>
+//             <TextField type="number" placeholder="please input your salary" name="salary" 
+// fullWidth margin="normal" value={this.state.salary} onChange={this.onChange} />
 
-          <button onClick={this.saveUser}>Save</button>
+//           <Button variant="contained" color="primary" onClick={this.saveUser}>Save</Button>
 
-        </form>
-      </div>
-    );
-  }
+//         </form>
+//       </div>
+//     );
+//   }
+}
+
+const formContainer = {
+  display: 'flex',
+  flexFlow: 'row wrap'
+}
+
+const style = {
+  display: 'flex',
+  justifyContent: 'center'
 }
 
 export default AddUserComponent;

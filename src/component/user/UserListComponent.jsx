@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ApiService from "../../ApiService";
 
+import {Table, TableBody, TableCell, TableHead, TableRow, Button, Typography} from '@material-ui/core'
+// import {CreateIcon, DeleteIcon} from '@material-ui/icons'
+
 class UserListComponent extends Component{
 
   constructor(props){
@@ -58,40 +61,50 @@ class UserListComponent extends Component{
 
     return(
       <div>
-        <h2>User List</h2>
-        <button onClick={this.addUser}> Add User </button>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>FistName</th>
-              <th>LastName</th>
-              <th>UserName</th>
-              <th>Age</th>
-              <th>Salary</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Typography variant="h4" style={style}>User List</Typography>
+        <Button variant="contained" color="primary" onClick={this.addUser}> Add User </Button>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>FistName</TableCell>
+              <TableCell align="right">LastName</TableCell>
+              <TableCell align="right">UserName</TableCell>
+              <TableCell align="right">Age</TableCell>
+              <TableCell align="right">Salary</TableCell>
+              <TableCell align="right">Edit</TableCell>
+              <TableCell align="right">Delete</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {this.state.users.map( user => 
-              <tr key={user.id}>
-                <td>{user.firstName}</td>
-                <td>{user.lastName}</td>
-                <td>{user.username}</td>
-                <td>{user.age}</td>
-                <td>{user.salary}</td>
-                <td>
-                  <button onClick={() => this.editUser(user.id)}>Edit</button>
-                  <button onClick={() => this.deleteUser(user.id)}>Delete</button>
-                </td>
-              </tr>
+              <TableRow key={user.id}>
+                <TableCell component="th" scope="user">{user.id}</TableCell>
+                <TableCell align="right">{user.firstName}</TableCell>
+                <TableCell align="right">{user.lastName}</TableCell>
+                <TableCell align="right">{user.username}</TableCell>
+                <TableCell align="right">{user.age}</TableCell>
+                <TableCell align="right">{user.salary}</TableCell>
+                <TableCell align="right" onClick={()=> this.editUser(user.id)}>
+                  {/* <CreateIcon /> */}
+                </TableCell>
+                <TableCell align="right" onClick={()=> this.deleteUser(user.id)}>
+                  {/* <DeleteIcon /> */}
+                </TableCell>
+              </TableRow>
             )}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
     );
     
   }
 
+}
+
+const style = {
+  display: 'flex',
+  justifyContent: 'center'
 }
 
 export default UserListComponent;

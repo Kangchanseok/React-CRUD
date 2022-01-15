@@ -17,11 +17,9 @@ function withHook (Component) {
 }
 
 class UserListComponent extends Component{
-  // function UserListComponent() {
   
 
   constructor(props){
-    // let navigate = useNavigate();
     super(props);
 
     this.state = {

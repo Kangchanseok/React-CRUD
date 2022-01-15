@@ -85,7 +85,7 @@ class EditUserComponent extends Component{
         <form>
           <div>
             <label>User Name:</label>
-            <input type="text" name="username" readOnly="true" defaultValue={this.state.username} />
+            <input type="text" readOnly name="username" Value={this.state.username} />
           </div>
 
           <div>

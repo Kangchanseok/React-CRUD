@@ -9,6 +9,7 @@ function withHook (Component) {
     return <Component {...props} navigate={navigate} />;
   }
 }
+
 class AddUserComponent extends Component{
 
   constructor(props){

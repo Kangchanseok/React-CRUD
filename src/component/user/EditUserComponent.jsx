@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 import ApiService from "../../ApiService";
+import { useNavigate } from 'react-router-dom';
+
+function withHook (Component) {
+  return function WrappedComponent (props){
+    let navigate = useNavigate();
+    return <Component {...props} navigate={navigate} />;
+  }
+}
 
 class EditUserComponent extends Component{
 
@@ -58,10 +66,12 @@ class EditUserComponent extends Component{
 
     ApiService.editUser(user)
       .then( res => {
+        let navigate = this.props.navigate;
         this.setState({
           message : user.lastName + '님 정보가 수정되었습니다.'
         })
-        this.props.history.push('/users');
+        // this.props.history.push('/users');
+        navigate('/users')
       })
       .catch(err => {
         console.log('saveUser() 에러', err);
@@ -110,4 +120,4 @@ onChange={this.onChange} />
   }
 }
 
-export default EditUserComponent;
+export default  withHook(EditUserComponent);

@@ -1,23 +1,39 @@
 import React, { Component } from 'react';
 import ApiService from "../../ApiService";
+import { useNavigate } from 'react-router-dom';
+
 
 import {Table, TableBody, TableCell, TableHead, TableRow, Button, Typography} from '@material-ui/core'
 // import {CreateIcon, DeleteIcon} from '@material-ui/icons'
 // import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from '@material-ui/icons/Delete';
+import CreateIcon from '@material-ui/icons/Create';
+
+function withHook (Component) {
+  return function WrappedComponent (props){
+    let navigate = useNavigate();
+    return <Component {...props} navigate={navigate} />;
+  }
+}
 
 class UserListComponent extends Component{
+  // function UserListComponent() {
+  
 
   constructor(props){
+    // let navigate = useNavigate();
     super(props);
 
     this.state = {
       users: [],
       message: null
+      
     }
   }
 
   componentDidMount(){
     this.reloadUserList();
+    
   }
 
   reloadUserList = () => {
@@ -49,17 +65,26 @@ class UserListComponent extends Component{
   }
   
   editUser = (ID) => {
+    // let navigate = useNavigate();
+    let navigate = this.props.navigate;
     window.localStorage.setItem("userID", ID);
-    this.props.history.push('/edit-user');
+    // this.props.history.push('/edit-user');
+    // useNavigate('/edit-user');
+    navigate('/edit-user')
   }
 
   addUser = () => {
+    // let navigate = useNavigate();
+    let navigate = this.props.navigate;
     window.localStorage.removeItem("userID");
-    this.props.history.push('/add-user');
+    // this.props.history.push('/add-user');
+    // useNavigate('/add-user');
+    navigate('/add-user')
   }
 
   render(){
 
+    console.log(this.state.users)
     return(
       <div>
         <Typography variant="h4" style={style}>User List</Typography>
@@ -87,10 +112,10 @@ class UserListComponent extends Component{
                 <TableCell align="right">{user.age}</TableCell>
                 <TableCell align="right">{user.salary}</TableCell>
                 <TableCell align="right" onClick={()=> this.editUser(user.id)}>
-                  {/* <CreateIcon /> */}
+                  <CreateIcon />
                 </TableCell>
                 <TableCell align="right" onClick={()=> this.deleteUser(user.id)}>
-                  {/* <DeleteIcon /> */}
+                  <DeleteIcon />
                 </TableCell>
               </TableRow>
             )}
@@ -107,5 +132,4 @@ const style = {
   display: 'flex',
   justifyContent: 'center'
 }
-
-export default UserListComponent;
+export default withHook(UserListComponent);

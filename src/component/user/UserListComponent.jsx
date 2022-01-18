@@ -112,7 +112,7 @@ class UserListComponent extends Component{
                 <TableCell align="right" onClick={()=> this.editUser(user.id)}>
                   <CreateIcon />
                 </TableCell>
-                <TableCell align="right" onClick={()=> this.deleteUser(user.id)}>
+                <TableCell className="test" align="right" onClick={()=> this.deleteUser(user.id)}>
                   <DeleteIcon />
                 </TableCell>
               </TableRow>

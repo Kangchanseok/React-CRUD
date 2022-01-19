@@ -56,6 +56,11 @@ class EditUserComponent extends Component{
     });
   }
 
+  back = () => {
+    let navigate = this.props.navigate;
+    navigate('/users')
+  }
+  
   saveUser = (e) => {
     e.preventDefault();
 
@@ -103,6 +108,7 @@ fullWidth margin="normal" value={this.state.age} onChange={this.onChange} />
 fullWidth margin="normal" value={this.state.salary} onChange={this.onChange} />
 
           <Button variant="contained" color="primary" onClick={this.saveUser}>Save</Button>
+          <Button variant="contained" color="primary" style={backButton} onClick={this.back}>홈으로</Button>
 
         </form>
       </div>
@@ -113,6 +119,9 @@ fullWidth margin="normal" value={this.state.salary} onChange={this.onChange} />
 const style = {
   display: 'flex',
   justifyContent: 'center'
+}
+const backButton = {
+  marginLeft: '10px' // 여긴 margin-left가 아니라 marginLeft넹 ㅎㅎ;
 }
 
 export default  withHook(EditUserComponent);
